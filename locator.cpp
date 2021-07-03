@@ -7,20 +7,20 @@
  ***************************************************************************/
 
 /*****************************************************************************
- * This file is part of KLog.                                             *
+ * This file is part of KLuster.                                             *
  *                                                                           *
- *    KLog is free software: you can redistribute it and/or modify        *
+ *    KLuster is free software: you can redistribute it and/or modify        *
  *    it under the terms of the GNU General Public License as published by   *
  *    the Free Software Foundation, either version 3 of the License, or      *
  *    (at your option) any later version.                                    *
  *                                                                           *
- *    KLog is distributed in the hope that it will be useful,             *
+ *    KLuster is distributed in the hope that it will be useful,             *
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of         *
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
  *    GNU General Public License for more details.                           *
  *                                                                           *
  *    You should have received a copy of the GNU General Public License      *
- *    along with KLog.  If not, see <http://www.gnu.org/licenses/>.       *
+ *    along with KLuster.  If not, see <http://www.gnu.org/licenses/>.       *
  *                                                                           *
  *****************************************************************************/
 
@@ -46,68 +46,68 @@ bool Locator::isValidLocator(const QString& tlocator){
    ------------------------------------------------- */
  //qDebug() << "Locator::isValidLocator: " << tlocator << endl;
 
-	int lenght_of_locator;
-	testLocator ="A";
-	testLocator = tlocator.toUpper();
-	lenght_of_locator = testLocator.length();
+    int lenght_of_locator;
+    testLocator ="A";
+    testLocator = tlocator.toUpper();
+    lenght_of_locator = testLocator.length();
 
-	if (lenght_of_locator == 4){
-		testLocator = testLocator +"LM";
-		lenght_of_locator = 6;
-	}
+    if (lenght_of_locator == 4){
+        testLocator = testLocator +"LM";
+        lenght_of_locator = 6;
+    }
 
-	if (lenght_of_locator != 6) { 
-		return false;
-	}else{
-		theChar = testLocator.at(0);
-		if (!theChar.isLetter()){  //First letter is not a valid letter
+    if (lenght_of_locator != 6) {
+        return false;
+    }else{
+        theChar = testLocator.at(0);
+        if (!theChar.isLetter()){  //First letter is not a valid letter
 
-			return false;
-		}
-		if ((theChar<'A') && (theChar>'R') ){  //First letter is not a valid letter
+            return false;
+        }
+        if ((theChar<'A') && (theChar>'R') ){  //First letter is not a valid letter
 
-			return false;
-		}
-		theChar = testLocator.at(1);
-		if (!theChar.isLetter()){  //Second letter is not a valid letter
+            return false;
+        }
+        theChar = testLocator.at(1);
+        if (!theChar.isLetter()){  //Second letter is not a valid letter
 
-			return false;
-		}
-		if ((theChar<'A') && (theChar>'R') ){  //Second letter is not a valid letter
+            return false;
+        }
+        if ((theChar<'A') && (theChar>'R') ){  //Second letter is not a valid letter
 
-			return false;
-		}
-		theChar = testLocator.at(2);
-		if (!theChar.isDigit()){  //Second letter is not a number
+            return false;
+        }
+        theChar = testLocator.at(2);
+        if (!theChar.isDigit()){  //Second letter is not a number
 
-			return false;
-		}
-		theChar = testLocator.at(3);
-		if (!theChar.isDigit()){  //Second letter is not a number
+            return false;
+        }
+        theChar = testLocator.at(3);
+        if (!theChar.isDigit()){  //Second letter is not a number
 
-			return false;
-		}
-		theChar = testLocator.at(4);
-		if (!theChar.isLetter()){  //First letter is not a valid letter
+            return false;
+        }
+        theChar = testLocator.at(4);
+        if (!theChar.isLetter()){  //First letter is not a valid letter
 
-			return false;
-		}
-		if ((theChar<'A') && (theChar>'X') ){  //First letter is not a valid letter
+            return false;
+        }
+        if ((theChar<'A') && (theChar>'X') ){  //First letter is not a valid letter
 
-			return false;
-		}
-		theChar = testLocator.at(5);
-		if (!theChar.isLetter()){  //Second letter is not a valid letter
+            return false;
+        }
+        theChar = testLocator.at(5);
+        if (!theChar.isLetter()){  //Second letter is not a valid letter
 
-			return false;
-		}
-		if ((theChar<'A') && (theChar>'X') ){  //Second letter is not a valid letter
+            return false;
+        }
+        if ((theChar<'A') && (theChar>'X') ){  //Second letter is not a valid letter
 
-			return false;
-		}
-	}
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 }
 
 
@@ -224,13 +224,13 @@ int Locator::getDistance(const double lon1, const double lat1, const double lon2
 // << QString::number(lat1)  << ") - DxPos(" << QString::number(lon2) << "/" << QString::number(lat2) << ")" << endl;
   double lo1,la1,lo2,la2;
 
-// TODO: Is it needed to check if the longitude and latitude are correct and/or between the magins?  
+// TODO: Is it needed to check if the longitude and latitude are correct and/or between the magins?
 //   if (!( (checkCoords(lon1, lat1) ) && (checkCoords(lon2, lat2)) ))
 //     return 0;
-  
+
   lo1=lon1* DEG_TO_RAD;   // Convert degrees to radians
   la1=lat1* DEG_TO_RAD;
-  lo2=lon2* DEG_TO_RAD;  
+  lo2=lon2* DEG_TO_RAD;
   la2=lat2* DEG_TO_RAD;
 
   if (!_imperialSystem){
@@ -290,13 +290,13 @@ QString Locator::getLocator(const double lon1, const double lat1) const{
   locat = locat + QChar(fla+'A');
 
 //   locat.at(0)=QChar(alo+'A');
-  
+
 //   locat.at(1)=QChar(bla+'A');
 //   locat.at(2)=QChar(clo+'0');
 //   locat.at(3)=QChar(dla+'0');
 //   locat.at(4)=QChar(elo+'A');
 //   locat.at(5)=QChar(fla+'A');
-  
+
 
 
 return locat;
@@ -311,7 +311,7 @@ void Locator::degTodms(const double deg){
   temp = ( deg - (double)ideg ) * 60.0;
   imin = (int)temp;
   temp = ( temp - (double)imin ) * 60.0;
-  isec = (int)(temp); 
+  isec = (int)(temp);
 }
 
 double Locator::dmsTodeg (int deg, int min, int sec){
@@ -320,7 +320,7 @@ double Locator::dmsTodeg (int deg, int min, int sec){
 
 
 int Locator::getBeamBetweenLocators (const QString& tlocator1, const QString& tlocator2)
-{    
+{
     //qDebug() << "Locator::getBeamBetweenLocators: " << tlocator1 << "/" << tlocator2 << endl;
     if (  !(isValidLocator(tlocator1) && isValidLocator(tlocator2) )  )
     {

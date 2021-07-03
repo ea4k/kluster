@@ -10,23 +10,23 @@ int main(int argc, char *argv[])
 
     QString version = "0.0.1";
     QDir d1 = QDir();
-    QString mondxDir;
+    QString appDir;
 
 #ifdef Q_OS_WIN
     //qDebug() << "WINDOWS DETECTED!"  << endl;
-    mondxDir = QDir::homePath()+"/mondx";  // We create the \mondx for the logs and data
+    appDir = QDir::homePath()+"/kluster";  // We create the \kluster for the logs and data
 
 #else
     //qDebug() << "NO WINDOWS DETECTED!"  << endl;
-    mondxDir = QDir::homePath()+"/.mondx";  // We create the ~/.mondx
+    appDir = QDir::homePath()+"/.kluster";  // We create the ~/.kluster
 #endif
 
 
-    if (!QDir::setCurrent (mondxDir) )
+    if (!QDir::setCurrent (appDir) )
     {
-        if (d1.mkdir(mondxDir))
+        if (d1.mkdir(appDir))
         {
-            if (QDir::setCurrent (mondxDir) )
+            if (QDir::setCurrent (appDir) )
             {
             }
             else
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 
 
 
-    MainWindow w(mondxDir, version);
+    MainWindow w(appDir, version);
     w.show();
 
     return a.exec();

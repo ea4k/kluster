@@ -7,20 +7,20 @@
  ***************************************************************************/
 
 /*****************************************************************************
- * This file is part of KLog.                                                *
+ * This file is part of KLuster.                                                *
  *                                                                           *
- *    KLog is free software: you can redistribute it and/or modify           *
+ *    KLuster is free software: you can redistribute it and/or modify           *
  *    it under the terms of the GNU General Public License as published by   *
  *    the Free Software Foundation, either version 3 of the License, or      *
  *    (at your option) any later version.                                    *
  *                                                                           *
- *    KLog is distributed in the hope that it will be useful,                *
+ *    KLuster is distributed in the hope that it will be useful,                *
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of         *
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
  *    GNU General Public License for more details.                           *
  *                                                                           *
  *    You should have received a copy of the GNU General Public License      *
- *    along with KLog.  If not, see <http://www.gnu.org/licenses/>.          *
+ *    along with KLuster.  If not, see <http://www.gnu.org/licenses/>.          *
  *                                                                           *
  *****************************************************************************/
 
@@ -47,7 +47,7 @@ void DataBase::compress()
 
     QSqlDatabase db = QSqlDatabase::database();
     if (!db.open()) {
-        QMessageBox::warning(0, QObject::tr("Database Error"),
+        QMessageBox::warning(nullptr, QObject::tr("Database Error"),
                              db.lastError().text());
     }
    else
@@ -65,14 +65,14 @@ bool DataBase::createConnection()
     QSqlQuery query;
 
    //db.setDatabaseName(":memory:"); // 2m 07s
-    db.setDatabaseName("mondx.dat");
+    db.setDatabaseName("kluster.dat");
 
 
     //qDebug() << "DataBase::createConnection: 0" << endl;
 
     //rc = sqlite3_open(":memory:", &db);
     if (!db.open()) {
-        QMessageBox::warning(0, QObject::tr("Database Error"),
+        QMessageBox::warning(nullptr, QObject::tr("Database Error"),
                              db.lastError().text());
         //qDebug() << "DataBase::createConnection: DB creation ERROR"  << endl;
         return false;
@@ -107,7 +107,7 @@ bool DataBase::createConnection()
             stringQuery ="PRAGMA synchronous=OFF;";
             query.exec(stringQuery);
             stringQuery ="PRAGMA main.temp_store = MEMORY;";
-            query.exec(stringQuery);         
+            query.exec(stringQuery);
             //stringQuery="PRAGMA auto_vacuum = FULL;";
             //query.exec(stringQuery);
             stringQuery ="PRAGMA case_sensitive_like=OFF;";
@@ -608,7 +608,7 @@ confirmed = 1     Set as Confirmed
 
 
 
-//To add a mode, just create another line:      
+//To add a mode, just create another line:
       query.exec("INSERT INTO mode (name, cabrillo) VALUES ('AM', 'PH')");
       query.exec("INSERT INTO mode (name, cabrillo) VALUES ('AMTORFEC', 'NO')");
       query.exec("INSERT INTO mode (name, cabrillo) VALUES ('ASCI', 'NO')");
@@ -867,7 +867,7 @@ int DataBase::getBandIdFromFreq(const QString fr)
 {
      //qDebug() << "DataBase::getBandIdFromFreq: " << fr << endl;
     //Freq should be in MHz
-    QString queryString = QString("SELECT id FROM band WHERE lower < '%1' and upper > '%2'").arg(fr).arg(fr);    
+    QString queryString = QString("SELECT id FROM band WHERE lower < '%1' and upper > '%2'").arg(fr).arg(fr);
     QSqlQuery query(queryString);
     query.next();
 
@@ -943,8 +943,8 @@ bool DataBase::updateIfNeeded()
     { // DB is outdated. We need to update!!
 
         QMessageBox msgBox;
-        msgBox.setText("KLog DB needs to be upgraded.");
-        msgBox.setInformativeText("Do you want to upgrade it now?\nIf DB is not upgraded KLog may not work properly.");
+        msgBox.setText("KlusterDB needs to be upgraded.");
+        msgBox.setInformativeText("Do you want to upgrade it now?\nIf DB is not upgraded Kluster may not work properly.");
         msgBox.setStandardButtons(QMessageBox::Apply | QMessageBox::Discard);
         msgBox.setDefaultButton(QMessageBox::Apply);
 

@@ -7,20 +7,20 @@
  ***************************************************************************/
 
 /*****************************************************************************
- * This file is part of KLog.                                             *
+ * This file is part of KLuster.                                             *
  *                                                                           *
- *    KLog is free software: you can redistribute it and/or modify        *
+ *    KLuster is free software: you can redistribute it and/or modify        *
  *    it under the terms of the GNU General Public License as published by   *
  *    the Free Software Foundation, either version 3 of the License, or      *
  *    (at your option) any later version.                                    *
  *                                                                           *
- *    KLog is distributed in the hope that it will be useful,             *
+ *    KLuster is distributed in the hope that it will be useful,             *
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of         *
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
  *    GNU General Public License for more details.                           *
  *                                                                           *
  *    You should have received a copy of the GNU General Public License      *
- *    along with KLog.  If not, see <http://www.gnu.org/licenses/>.       *
+ *    along with KLuster.  If not, see <http://www.gnu.org/licenses/>.       *
  *                                                                           *
  *****************************************************************************/
 
@@ -169,7 +169,7 @@ QStringList World::processLine(const QString _line)
         prefix = list[7];
         currentPrefix = prefix;
 
-        queryString = "SELECT id FROM continent WHERE shortname=='" + continentName + "'";        
+        queryString = "SELECT id FROM continent WHERE shortname=='" + continentName + "'";
         query1.exec(queryString);
         query1.next();
         if (query1.isValid())
@@ -869,7 +869,7 @@ int World::getContinentNumber(const int _enti)
     else
     {
         query.next();
-        if ( !(query.isValid()) ) {           
+        if ( !(query.isValid()) ) {
             return -1;
         }else{
             a = (query.value(0)).toInt();
@@ -894,7 +894,7 @@ int World::getContinentNumber(const int _enti)
         }
         return a;
     }
-    return -1;
+    //return -1;
 
 }
 

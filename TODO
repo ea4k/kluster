@@ -1,18 +1,17 @@
-This is a kind of roadmap for MonDX development.
+This is a kind of roadmap for Kluster development.
 It is not fixed... new features may be prioritized or not added without any notice ;-)
 Feel free to request any roadmap change if you have any suggestion.
 
 
-MonDX 0.0.1
+Kluster 0.0.1
 TODO: If a call is too short of too long, the columns are not aligned
 TODO: Add the capability to select the DXCluster server to use
 
-
-MonDX 0.0.2
+Kluster 0.0.2
 TODO: Add the capability to add/edit/remove new DXCluster servers
 
-MonDX 0.0.3
+Kluster 0.0.3
 TODO: Add the capability to update the CTY.CSV country file
 
-MonDX 0.0.4
+Kluster 0.0.4
 TODO: Add the capability to define a default Call/password per dxcluster(TBC)

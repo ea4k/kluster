@@ -1,27 +1,27 @@
 #include "mainwindow.h"
 
-MainWindow::MainWindow(const QString _mondxDir, const QString _version)
+MainWindow::MainWindow(const QString _appDir, const QString _version)
     //: QMainWindow(parent)
 {
-    dxc = new DXClusterTWidget(_mondxDir, "dxfun.com", 8000, this);
-    mondxDir = _mondxDir;
+    dxc = new DXClusterTWidget(_appDir, "dxfun.com", 8000, this);
+    appDir = _appDir;
     softwareVersion = _version;
 
     configured = false;
     setupDialog = new SetupDialog(!configured);
 
     db = new DataBase(softwareVersion);
-    world = new World(mondxDir);
+    world = new World(appDir);
 
     if (!db->createConnection())
     {
         //qDebug() << "MainWindow::MainWindow: 4" << endl;
-        world->create(mondxDir);
+        world->create(appDir);
         return;
     }
     else
     {
-        world->create(mondxDir);
+        world->create(appDir);
         //db->updateIfNeeded(); // Check if we need to update the DB
     }
 

@@ -14,18 +14,18 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 }
 unix {
     macx {
-        TARGET = MonDX
+        TARGET = Kluster
     } else {
-        TARGET = mondx
+        TARGET = kluster
     }
 } else {
-    TARGET = mondx
+    TARGET = kluster
 }
 
 CONFIG += app_bundle
 CONFIG += static
 
-TARGET = mondx
+TARGET = kluster
 TEMPLATE = app
 
 

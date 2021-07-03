@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(const QString _mondxDir, const QString _version);
+    MainWindow(const QString _appDir, const QString _version);
     //MainWindow(QWidget *parent = 0);
     ~MainWindow();
 private slots:
@@ -33,7 +33,7 @@ private:
     QAction *setupAct;
     // </SETUPDIALOG>
 
-    QString softwareVersion, mondxDir;
+    QString softwareVersion, appDir;
 
     DataBase *db;
     World *world;

@@ -7,20 +7,20 @@ email                : jaime@robles.es
 ***************************************************************************/
 
 /*****************************************************************************
-* This file is part of MonDX.                                               *
+* This file is part of Kluster.                                               *
 *                                                                           *
-*    MonDX is free software: you can redistribute it and/or modify          *
+*    Kluster is free software: you can redistribute it and/or modify          *
 *    it under the terms of the GNU General Public License as published by   *
 *    the Free Software Foundation, either version 3 of the License, or      *
 *    (at your option) any later version.                                    *
 *                                                                           *
-*    MonDX is distributed in the hope that it will be useful,                *
+*    Kluster is distributed in the hope that it will be useful,                *
 *    but WITHOUT ANY WARRANTY; without even the implied warranty of         *
 *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
 *    GNU General Public License for more details.                           *
 *                                                                           *
 *    You should have received a copy of the GNU General Public License      *
-*    along with MonDX.  If not, see <http://www.gnu.org/licenses/>.          *
+*    along with Kluster.  If not, see <http://www.gnu.org/licenses/>.          *
 *                                                                           *
 *****************************************************************************/
 
@@ -28,7 +28,7 @@ email                : jaime@robles.es
 
 DXClusterTWidget::DXClusterTWidget(const QString _dir, QWidget *parent )
 {
-    mondxDir = _dir;
+    appDir = _dir;
 }
 
 DXClusterTWidget::DXClusterTWidget(const QString _dir, const QString &clusterToConnect, const int portToConnect, QWidget *parent )
@@ -36,9 +36,9 @@ DXClusterTWidget::DXClusterTWidget(const QString _dir, const QString &clusterToC
 {
     qDebug() << "DXClusterTWidget::DXClusterTWidget" << endl;
 
-    mondxDir = _dir;
-    world = new World(mondxDir);
-    world->create(mondxDir);
+    appDir = _dir;
+    world = new World(appDir);
+    world->create(appDir);
 
     dxcView = new QListView();
     inputCommand = new QLineEdit();
@@ -127,20 +127,20 @@ void DXClusterTWidget::slotClusterDisplayError(QAbstractSocket::SocketError sock
      case QAbstractSocket::RemoteHostClosedError:
          break;
      case QAbstractSocket::HostNotFoundError:
-         QMessageBox::warning(this, tr("MonDX DXCluster"),
+         QMessageBox::warning(this, tr("Kluster DXCluster"),
                                   tr("The host was not found. Please check:\n\n"
                                      "- your network connection;\n"
                                      "- the host name and port settings."));
          break;
      case QAbstractSocket::ConnectionRefusedError:
-         QMessageBox::warning(this, tr("MonDX DXCluster"),
+         QMessageBox::warning(this, tr("Kluster DXCluster"),
                                   tr("The connection was refused by the peer. "
                                      "Make sure the DXCluster server is running, "
                                      "and check that the host name and port "
                                      "settings are correct."));
          break;
      default:
-         QMessageBox::warning(this, tr("MonDX DXCluster"),
+         QMessageBox::warning(this, tr("Kluster DXCluster"),
                                   tr("The following error occurred: %1.")
                                   .arg(tcpSocket->errorString()));
      }
@@ -253,8 +253,8 @@ void DXClusterTWidget::slotClusterSocketConnected()
 
     if (( dxClusterConnected ) && (!dxClusterAlreadyConnected) ){
         bool ok;
-        QString callsignText = QInputDialog::getText(this, tr("MonDX message"), tr("Enter your callsign to connect to the cluster:"), QLineEdit::Normal, "", &ok);
-        QString passwordText = QInputDialog::getText(this, tr("MonDX message"), tr("Enter your password to connect to the cluster(just enter if no pasword!):"), QLineEdit::Normal, "", &ok);
+        QString callsignText = QInputDialog::getText(this, tr("Kluster message"), tr("Enter your callsign to connect to the cluster:"), QLineEdit::Normal, "", &ok);
+        QString passwordText = QInputDialog::getText(this, tr("Kluster message"), tr("Enter your password to connect to the cluster(just enter if no pasword!):"), QLineEdit::Normal, "", &ok);
         QTextStream os(tcpSocket);
         if ( callsignText.length() > 2 && ok ) {
             os << callsignText << "\n";
@@ -399,7 +399,7 @@ void DXClusterTWidget::addSpotToList(const QString _de, const QString _fr, const
 
     QStandardItem *de = new QStandardItem(line);
    // QStandardItem *ti = new QStandardItem(line2);
-    flagPath = QString("/Users/devel/Desktop/mondx/img/") + getFlagFromDX(_dx) + QString(".png");
+    flagPath = QString("/Users/devel/Desktop/kluster/img/") + getFlagFromDX(_dx) + QString(".png");
     de->setIcon(QIcon(flagPath));
 
 
@@ -509,7 +509,7 @@ QString DXClusterTWidget::getFlagFromDX(const QString _dx)
     case 438: // Madagascar
         return "mg";
     break;
-    case 444: //Mauritania        
+    case 444: //Mauritania
         return "mr";
     break;
     case 187: // Niger

@@ -1,9 +1,9 @@
-MonDX is a basic DX cluster client.
+Kluster is a basic DX cluster client.
 
-The objective of MonDX is to provide a free software that runs in Linux, OSX and Windows.
-MonDX will provide hamradio DX-Cluster client.
+The objective of Kluster is to provide a free software that runs in Linux, macOS and Windows.
+Kluster will provide hamradio DX-Cluster client.
 
-Check http://www.mondx.org and http://jaime.robles.es for news & updates.
+Check http://www.mondx.org and https://github.com/ea4k/kluster for news & updates.
 
 
 Read the INSTALL for installation purposes.
@@ -11,6 +11,6 @@ Read the changelog (windows users, rename to changelog.txt) to see the changes f
 
 Please send all your suggestions & bug reports.
 
-I hope you enjoy MonDX!
+I hope you enjoy Kluster!
 
-73 de Jaime, EA4TV
+73 de Jaime, EA4K
